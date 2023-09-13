@@ -22,6 +22,13 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+
+    // Conditional for compatibility with AGP <4.2.
+    // https://github.com/avioli/uni_links/pull/191/files
+    if (project.android.hasProperty("namespace")) {
+        namespace 'name.avioli.unilinks'
+    }
+    
     compileSdkVersion 28
 
     defaultConfig {
